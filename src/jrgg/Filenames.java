@@ -25,7 +25,4 @@ public class Filenames {
 	public void apaga() {
 		this.deleta = true;
 	}
-	
-	
-
 }

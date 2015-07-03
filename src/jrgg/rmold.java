@@ -5,18 +5,15 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
 public class rmold extends ControlFile {
 	
-	
 	public static void deleteFileNIO(String filePath) throws IOException{
 		Path path = Paths.get(filePath);
 		Files.delete(path);
 	}
-	
 	
 	public static void lista(Backup bk){
 		Filesbk bkgroup = new Filesbk(bk.getNome(), bk.getQndSalva());
@@ -45,10 +42,8 @@ public class rmold extends ControlFile {
 			}
 		}
 		
-		int j;
 		int del = 0;
 		if(!bkgroup.filenome.isEmpty()){
-			j = 0;
 			System.out.println("Backup: " + bkgroup.getNome());
 			System.out.println("Manter os " + bkgroup.getQnt() +" ultimos");
 			
@@ -63,7 +58,6 @@ public class rmold extends ControlFile {
 				}
 				System.out.print("[" + (x + 1) +"] |"+  bkgroup.filenome.get(x).getFilenam() + "|");
 				if(bkgroup.filenome.get(x).isDeleta()){
-				//	File file = new File(bkgroup.filenome.get(x).getFilenam());  
 					String arqdel = bkgroup.filenome.get(x).getFilenam().trim();
 					final String FILE_PATH = arqdel;
 					try {
