@@ -48,9 +48,11 @@ public class ControlFile {
 		br.close();
 	}
 	
+	
 	public static void criarBackup(String nome, String diretorio, String formato, int qndSalva){
 		backups.add(new Backup(nome, diretorio, formato, qndSalva));
 	}
+	
 	
 	public static void listar(){
 		byte x = 0;
@@ -61,7 +63,6 @@ public class ControlFile {
 		} else {
 			System.out.println("Sem registos");
 		}
-		
 	}
 	
 	protected static void guardarDados(){

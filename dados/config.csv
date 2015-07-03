@@ -1,2 +1,5 @@
-AES;C:\backups\aes;backup_AES01CDom0_;2
-AACMA;C:\backups\cm;full_AACMA_;6
+AES;c:/backups/aes;backup_AES01CDom0_;2
+AACMA;c:/backups/cm;full_AACMA_;6
+CMS;c:/backups/cms;CMS-;2
+SBCE;c:/backups/sbce;*;1
+SMGR;c:/backups/smgr;backup_SMGR01CDom0;3

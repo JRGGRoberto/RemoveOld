@@ -9,12 +9,21 @@ public class rmold extends ControlFile {
 	
 	
 	public static void lista(Backup bk){
-	//	ArrayList<Filesbk> bkgroup = new ArrayList<Filesbk>();
-		
 		Filesbk bkgroup = new Filesbk(bk.getNome(), bk.getQndSalva());
 		
 		File folder = new File(bk.getDiretorio());
 		File[] listOfFiles = folder.listFiles();
+		
+		
+		/**
+		 * Ordena de acordo com a ultima modificação
+		 */
+		Arrays.sort(listOfFiles, new Comparator<File>(){
+		    public int compare(File f1, File f2){
+		        return Long.valueOf(f1.lastModified()).compareTo(f2.lastModified());
+		    } 
+		});
+
 		
 		Arrays.sort(listOfFiles, new Comparator<File>(){
 		    public int compare(File f1, File f2){
@@ -44,12 +53,23 @@ public class rmold extends ControlFile {
 			}
 			
 			for(int x = 0; x < bkgroup.filenome.size(); x ++){
-				
 				if(del > 0){
 					bkgroup.filenome.get(x).apaga();
 					del--;
 				}
-				System.out.println("[" + (x + 1) + " . " + bkgroup.filenome.get(x).isDeleta() +"] "+  bkgroup.filenome.get(x).getFilenam());
+				System.out.print("[" + (x + 1) +"] |"+  bkgroup.filenome.get(x).getFilenam() + "|");
+				if(bkgroup.filenome.get(x).isDeleta()){
+					File file = new File(bkgroup.filenome.get(x).getFilenam());  
+					
+					if(file.delete()){
+						System.out.print(" - Removido");	
+					} else {
+						System.out.print(" - Error");
+						file.deleteOnExit();
+					}
+				}
+				System.out.println();
+
 			}
 		}
 		System.out.println();
