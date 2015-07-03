@@ -53,6 +53,32 @@ public class ControlFile {
 		backups.add(new Backup(nome, diretorio, formato, qndSalva));
 	}
 	
+	public static void deleteBackup(int index){
+	    Backup backup = backups.get(index);
+	    File fileDirectory = new File(backup.diretorio);
+	    
+	    //list all files into directory
+            String files[] = fileDirectory.list();
+
+            for (String temp : files) {
+               File fileDelete = new File(fileDirectory, temp);
+               fileDelete.delete();
+            }
+
+            //check the directory again, if empty then delete it
+            if(fileDirectory.list().length==0){
+                boolean result = fileDirectory.delete();
+                if(result){
+                    System.out.println("file deleted");
+                    backups.remove(index);
+                }
+                else{
+                    System.out.println("Error trying delete file");
+                }
+            }
+	    
+	}
+	
 	
 	public static void listar(){
 		byte x = 0;

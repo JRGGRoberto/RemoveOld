@@ -34,7 +34,7 @@ public class Config {
 						int qndSalva = key.nextInt();
 						ControlFile.criarBackup(nome, diretorio, formato, qndSalva);
 						System.out.println();
-					break;
+						break;
 				
 				case 2: 
 						System.out.println("- Apagar ControlFile");
@@ -42,11 +42,12 @@ public class Config {
 						System.out.println("Informe o n. a apagar: ");
 						byte i = key.nextByte();
 						if(i>=0 && i< ControlFile.backups.size()){
-							ControlFile.backups.remove(i);
+							ControlFile.deleteBackup(i);
 						} else {
 							System.out.println("Fora do range");
 						}
 						System.out.println();
+						break;
 						
 				case 3:
 						System.out.println("- Alterar ControlFile");
@@ -96,6 +97,7 @@ public class Config {
 		}while(op != 5 );
 		System.out.println("Fim.");
 		ControlFile.guardarDados();
+		key.close();
 	}
 }
 
