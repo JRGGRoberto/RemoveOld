@@ -1,12 +1,19 @@
 package jrgg;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class rmold {
-	public static void main(String[] args) {
-		File folder = new File("/");
+public class rmold extends ControlFile {
+	
+	
+	public static void lista(Backup bk){
+	//	ArrayList<Filesbk> bkgroup = new ArrayList<Filesbk>();
+		
+		Filesbk bkgroup = new Filesbk(bk.getNome(), bk.getQndSalva());
+		
+		File folder = new File(bk.getDiretorio());
 		File[] listOfFiles = folder.listFiles();
 		
 		Arrays.sort(listOfFiles, new Comparator<File>(){
@@ -17,18 +24,46 @@ public class rmold {
 		
 		for (int i = 0; i < listOfFiles.length; i++) {
 			if (listOfFiles[i].isFile()) {
-				if(listOfFiles[i].getName().length() > 11){
-					if(listOfFiles[i].getName().substring(0, 12).equals("install.res.") ){
-						System.out.println("File: " + i +" - " + listOfFiles[i].getName());
+				if(listOfFiles[i].getName().length() > bk.getFormato().length()){
+					if(listOfFiles[i].getName().substring(0, bk.getFormato().length()).equals(bk.getFormato()) ){
+						bkgroup.addfilename(bk.getDiretorio() + listOfFiles[i].getName());
 					}
 				}
-				
-				
-			//	System.out.println("File: [" +n+ "] "+ listOfFiles[i].getName());
-			} /*else if (listOfFiles[i].isDirectory()) {
-				System.out.println("Directory " + listOfFiles[i].getName());
-			}*/
+			}
 		}
-
+		
+		int j;
+		int del = 0;
+		if(!bkgroup.filenome.isEmpty()){
+			j = 0;
+			System.out.println("Backup: " + bkgroup.getNome());
+			System.out.println("Manter os " + bkgroup.getQnt() +" ultimos");
+			
+			if(bkgroup.getQnt()< bkgroup.filenome.size()){
+				del = bkgroup.filenome.size() - bkgroup.getQnt();
+			}
+			
+			for(int x = 0; x < bkgroup.filenome.size(); x ++){
+				
+				if(del > 0){
+					bkgroup.filenome.get(x).apaga();
+					del--;
+				}
+				System.out.println("[" + (x + 1) + " . " + bkgroup.filenome.get(x).isDeleta() +"] "+  bkgroup.filenome.get(x).getFilenam());
+			}
+		}
+		System.out.println();
+	}
+	
+	public static void main(String[] args) {
+		iniciar();
+		if(!backups.isEmpty()){
+			for(Backup b: backups){
+				lista(b);
+			}
+		}else {
+			System.out.println("Configure o sistema.");
+		}
+		
 	}
 }
