@@ -1,6 +1,4 @@
 # RemoveOld
-OK
-# RemoveOld
 Este programa é para gerir arquivos de backup.
 O Config.java é o programa main que gere as configuraçoes, um ficheiro texto que contem:
 -nome do backup;
@@ -24,5 +22,9 @@ quantidade: 2
 
 O programa rmold.java lê este ficheiro e deve remover os ficheiros mais antigos.
 no exemplo deixando somente estes:
+
     cmfull_AACMA_040001_20150630.tar.gz
     cmfull_AACMA_040001_20150701.tar.gz
+
+
+-Problemas na parte do delete.
