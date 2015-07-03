@@ -39,7 +39,7 @@ public class Config {
 				case 2: 
 						System.out.println("- Apagar ControlFile");
 						ControlFile.listar();
-						System.out.println("Informe o nº a apagar: ");
+						System.out.println("Informe o n. a apagar: ");
 						byte i = key.nextByte();
 						if(i>=0 && i< ControlFile.backups.size()){
 							ControlFile.backups.remove(i);
@@ -52,7 +52,7 @@ public class Config {
 						System.out.println("- Alterar ControlFile");
 						ControlFile.listar();
 						if(!ControlFile.backups.isEmpty()){
-							System.out.print("Informe o nº a alterar: ");
+							System.out.print("Informe o n. a alterar: ");
 							i = key.nextByte();
 							if((i>=0) && (i< ControlFile.backups.size() )){
 								System.out.print("1-nome, 2-direc, 3-format, 4-qnt: ");
@@ -90,7 +90,7 @@ public class Config {
 						System.out.println();
 					break;
 					
-				default: System.out.println("Op��o inv�lida\n");
+				default: System.out.println("a\n");
 					break;
 			}
 		}while(op != 5 );

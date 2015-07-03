@@ -21,13 +21,13 @@ public class ControlFile {
 	private static void carregarDados(){
 		File arq = new File(FICHEIROCONTROLFILE);
 		if(!arq.exists()){
-			System.out.println("N�o � possivel carregar ficheiro.");
+			System.out.println("Nao foi possivel carregar ficheiro.");
 			return;
 		}
 		try{
 			importarControlFile(arq);
 		} catch(Exception e){
-			System.out.println("Erro na importa��o dos ficheiros");
+			System.out.println("Erro na importacao dos ficheiros");
 		}
 	}
 	
@@ -56,7 +56,7 @@ public class ControlFile {
 		byte x = 0;
 		if(!backups.isEmpty()){
 			for(Backup b: backups){
-				System.out.println("["+ x++ +"] nome: "+ b.nome + "  |diretorio: " + b.diretorio + "  |constante_nome:4 " + b.formato + "  |qnt_salva: " + b.qndSalva);
+				System.out.println("["+ x++ +"] nome: "+ b.nome + "  |diretorio: " + b.diretorio + "  |formato: " + b.formato + "  |qnt_salva: " + b.qndSalva);
 			}
 		} else {
 			System.out.println("Sem registos");
@@ -74,7 +74,7 @@ public class ControlFile {
 			pw.flush();
 			pw.close();
 		} catch(FileNotFoundException e){
-			System.out.println("A pasta para grava��o de clientes n�o existe");
+			System.out.println("A pasta para gravacao inexistente");
 		}
 	}
 }
