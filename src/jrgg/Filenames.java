@@ -3,7 +3,7 @@ package jrgg;
 public class Filenames {
 	private String filenam;
 	private boolean deleta;
-	
+
 	public Filenames(String filenam) {
 		super();
 		this.filenam = filenam;
