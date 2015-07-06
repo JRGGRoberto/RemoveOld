@@ -14,7 +14,7 @@ public class ControlFile {
 	
 	public static void iniciar(){
 		backups = new ArrayList<Backup>();
-		ControlFile.carregarDados();
+		carregarDados();
 	}
 	
 	
