@@ -26,5 +26,6 @@ no exemplo deixando somente estes:
     cmfull_AACMA_040001_20150630.tar.gz
     cmfull_AACMA_040001_20150701.tar.gz
 
+Executando no Linux:
 
--Problemas na parte do delete.
+java -jar rmold.jar > /home/admin/ControlFile/logs/Log_`date "+%Y-%m-%d_%T"`.log
