@@ -14,6 +14,16 @@ public class Config {
 			System.out.println("??");
 		}
 	}
+	
+	public static void exempFormat(){
+		System.out.println("Formato - exemplo");
+		System.out.println("");
+		System.out.println("Para arquivos que nem este: CMS-150628-01-LSAC-00-F-01-05-CMS010000000000");
+		System.out.println("     Utilizar este formato: *****************************-CMS01");
+		System.out.println();
+		System.out.println("backup_AES01CDom0_2015_07_02_10_56_13.tgz");
+		System.out.println("backup_AES01CDom0_");
+	}
 
 	public static void main(String[] args) {
 		Scanner key = new Scanner(System.in);
@@ -41,6 +51,7 @@ public class Config {
 						exempDir();
 						System.out.print("Diretorio: ");
 						String diretorio = key.next();
+						exempFormat();
 						System.out.print("Formato: ");
 						String formato = key.next();
 						System.out.print("Qnt a ser guardada: ");
@@ -65,6 +76,8 @@ public class Config {
 						System.out.println("- Alterar ControlFile");
 						ControlFile.listar();
 						if(!ControlFile.backups.isEmpty()){
+							exempDir();
+							exempFormat();
 							System.out.print("Informe o n. a alterar: ");
 							i = key.nextByte();
 							if((i>=0) && (i< ControlFile.backups.size() )){

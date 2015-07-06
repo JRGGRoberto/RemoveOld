@@ -7,6 +7,11 @@ import java.util.Comparator;
 
 public class rmold extends ControlFile {
 	
+	/**
+	 *Recebe o caminho\nomearquivo 
+	 *e executa o comando do SO para exclusão
+	 * @param caminhoArq
+	 */
 	public static void apagar(String caminhoArq) {
 		String so = System.getProperty("os.name").substring(0, 3).toLowerCase();
 		String comando;
@@ -42,13 +47,28 @@ public class rmold extends ControlFile {
 		        return Long.valueOf(f1.lastModified()).compareTo(f2.lastModified());
 		    } 
 		});
-
+		
+		/**
+		 * Verifica o inicio do formato
+		 * se começar com * compara de uma forma
+		 * se não compara apenas o inicio informado no formato
+		 */
+		int len =0;
+		boolean inicioVariavel = false;
+		if(bk.formato.substring(0, 1).equals("*")){
+			inicioVariavel = true;
+			for(len=0; len < bk.formato.length(); len++){
+				if(!bk.formato.substring(len, len+1).equals("*")){
+					break;
+				}
+			}
+		}
 		
 		for (int i = 0; i < listOfFiles.length; i++) {
 			if (listOfFiles[i].isFile()) {
 				if(listOfFiles[i].getName().length() > bk.getFormato().length()){
-					if(listOfFiles[i].getName().substring(0, bk.getFormato().length()).equals(bk.getFormato()) ){
-						bkgroup.addfilename(bk.getDiretorio() + listOfFiles[i].getName());
+					if(listOfFiles[i].getName().substring(len, bk.getFormato().length()).equals(bk.getFormato()) ){
+							bkgroup.addfilename(bk.getDiretorio() + listOfFiles[i].getName());
 					}
 				}
 			}

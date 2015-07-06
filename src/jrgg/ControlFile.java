@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class ControlFile {
-	private static final String FICHEIROCONTROLFILE = "dados/config.csv";
+	private static final String FICHEIROCONTROLFILE = "config.csv";
 	protected static ArrayList<Backup> backups;
 	
 	public static void iniciar(){
