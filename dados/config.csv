@@ -1,5 +1,2 @@
-AES;dados/backups/aes;backup_AES01CDom0_;2
-AACMA;dados/backups/cm;full_AACMA_;6
-CMS;dados/backups/cms;CMS-;2
-SBCE;dados/backups/sbce;*;1
-SMGR;dados/backups/smgr;backup_SMGR01CDom0;3
+AACMA;C:\Users\RGomes\workspace\RemoveOld\dados\backups\cm\;full_AACMA_;4
+CMS;C:\Users\RGomes\workspace\RemoveOld\dados\backups\cms\;CMS-;2

@@ -2,17 +2,29 @@ package jrgg;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Comparator;
 
 public class rmold extends ControlFile {
 	
-	public static void deleteFileNIO(String filePath) throws IOException{
-		Path path = Paths.get(filePath);
-		Files.delete(path);
+	public static void apagar(String caminhoArq) {
+		String so = System.getProperty("os.name").substring(0, 3).toLowerCase();
+		String comando;
+		if (so.equals("mac") || so.equals("lin")) {
+			comando = "rm " + caminhoArq;
+		} else if (so.equals("win")){
+			comando = "cmd /C del /Q " + caminhoArq;
+		} else {
+			System.out.println("Sistema não reconhecido");
+			return;
+		}
+		Runtime r = Runtime.getRuntime();
+			try {
+			r.exec(comando);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public static void lista(Backup bk){
@@ -59,13 +71,8 @@ public class rmold extends ControlFile {
 				System.out.print("[" + (x + 1) +"] |"+  bkgroup.filenome.get(x).getFilenam() + "|");
 				if(bkgroup.filenome.get(x).isDeleta()){
 					String arqdel = bkgroup.filenome.get(x).getFilenam().trim();
-					final String FILE_PATH = arqdel;
-					try {
-						deleteFileNIO(FILE_PATH);
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				
+					apagar(arqdel);
+					System.out.print(" [removido]");
 				}
 				System.out.println();
 
@@ -82,6 +89,8 @@ public class rmold extends ControlFile {
 			}
 		}else {
 			System.out.println("Configure o sistema.");
+			System.out.println("Formato do arquivo:");
+			System.out.println("nome;dir/subdir;formato;N");
 		}
 		
 	}

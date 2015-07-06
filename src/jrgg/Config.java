@@ -26,6 +26,16 @@ public class Config {
 						System.out.println();
 						System.out.print("Nome: ");
 						String nome = key.next();
+						
+						System.out.println("Local");
+						String so = System.getProperty("os.name").substring(0, 3).toLowerCase();
+						if (so.equals("mac") || so.equals("lin")) {
+							System.out.println("/backup/mnt/");
+						} else if (so.equals("win")){
+							System.out.println("Exemplo: C:\\backup\\");
+						} else {
+							System.out.println("??");
+						}
 						System.out.print("Diretorio: ");
 						String diretorio = key.next();
 						System.out.print("Formato: ");
