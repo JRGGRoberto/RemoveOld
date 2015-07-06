@@ -2,6 +2,18 @@ package jrgg;
 import java.util.Scanner;
 
 public class Config {
+	
+	public static void exempDir(){
+		System.out.println("Local");
+		String so = System.getProperty("os.name").substring(0, 3).toLowerCase();
+		if (so.equals("mac") || so.equals("lin")) {
+			System.out.println("/backup/mnt/");
+		} else if (so.equals("win")){
+			System.out.println("Exemplo: C:\\backup\\");
+		} else {
+			System.out.println("??");
+		}
+	}
 
 	public static void main(String[] args) {
 		Scanner key = new Scanner(System.in);
@@ -26,16 +38,7 @@ public class Config {
 						System.out.println();
 						System.out.print("Nome: ");
 						String nome = key.next();
-						
-						System.out.println("Local");
-						String so = System.getProperty("os.name").substring(0, 3).toLowerCase();
-						if (so.equals("mac") || so.equals("lin")) {
-							System.out.println("/backup/mnt/");
-						} else if (so.equals("win")){
-							System.out.println("Exemplo: C:\\backup\\");
-						} else {
-							System.out.println("??");
-						}
+						exempDir();
 						System.out.print("Diretorio: ");
 						String diretorio = key.next();
 						System.out.print("Formato: ");
