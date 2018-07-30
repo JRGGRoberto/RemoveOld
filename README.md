@@ -1,10 +1,14 @@
 # RemoveOld
+This program is to manager backup files.
 Este programa é para gerir arquivos de backup.
+
+The Config.java is the main progran to management the configurations, this file has:
 O Config.java é o programa main que gere as configuraçoes, um ficheiro texto que contem:
--nome do backup;
--caminho do backup;
--formato; e
--quantidade de arquivos de devem ser mantidos
+-nome do backup; / backup name;
+-caminho do backup; / backup path;
+-formato; format;
+-quantidade de arquivos de devem ser mantidos. amount of files should be kept.
+
 
 Por exemplo, um backup gera estes ficheiros:
 
